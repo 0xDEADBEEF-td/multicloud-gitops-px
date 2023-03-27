@@ -7,10 +7,12 @@ namespace: portworx              # This is the default. Change this if you don't
 storage:
   usefileSystemDrive: false         # true/false Instructs PX to use an unmounted Drive even if it has a filesystem.
   usedrivesAndPartitions: false     # Defaults to false. Change to true and PX will use unmounted drives and partitions.
-  drives: "type=gp2,size=20"        # NOTE: This is a ";" seperated list of drives. For eg: "/dev/sda;/dev/sdb;/dev/sdc" Defaults to use -A switch.
+  drives: "type=gp2,size=20"        # NOTE: This is a ";" seperated list of drives. For eg: "/dev/sda;/dev/sdb;/dev/sdc" 
+                                    # Defaults to use -A switch.
                                     # To have drives automatically created specify the drive spec. For Eg: "type=gp2,size=150" or "type=io1,size=100,iops=2000"
   journalDevice:
   maxStorageNodesPerZone:
+  kvdbDrives: "type=gp2,size=150"
 
 network:
   dataInterface: none               # Name of the interface <ethX>
