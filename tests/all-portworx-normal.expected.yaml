@@ -1,0 +1,45 @@
+---
+# Source: hello-world/templates/portworx-storagecluster.yaml
+apiVersion: core.libopenstorage.org/v1
+kind: StorageCluster
+metadata:
+  annotations:
+    portworx.io/is-openshift: "true"
+  name: px-cluster-12af29b6-9ff4-46e5-be88-398a8e4074f4
+  namespace: portworx
+spec:
+  autopilot:
+    enabled: true
+    providers:
+    - name: default
+      params:
+        url: http://px-prometheus:9090
+      type: prometheus
+  cloudStorage:
+    deviceSpecs:
+    - type=gp3,size=50
+    kvdbDeviceSpec: type=gp3,size=50
+    maxStorageNodesPerZone: 1
+  csi:
+    enabled: true
+    installSnapshotController: true
+  image: portworx/oci-monitor:2.13.0
+  imagePullPolicy: Always
+  kvdb:
+    internal: true
+  monitoring:
+    prometheus:
+      enabled: true
+      exportMetrics: true
+      resources: {}
+    telemetry:
+      enabled: true
+  secretsProvider: k8s
+  startPort: 17001
+  stork:
+    enabled: true
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
+  version: 2.13.0
