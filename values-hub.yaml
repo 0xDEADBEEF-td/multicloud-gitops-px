@@ -4,6 +4,7 @@ clusterGroup:
 
   namespaces:
     - open-cluster-management
+    - portworx
     - vault
     - golang-external-secrets
     - config-demo
