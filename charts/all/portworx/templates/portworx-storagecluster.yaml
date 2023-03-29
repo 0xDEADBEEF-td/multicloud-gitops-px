@@ -10,7 +10,7 @@
 {{- $customRegistryURL := .Values.customRegistryURL | default "none" }}
 {{- $deleteStrategy := .Values.deleteStrategy | default "none" }}
 {{- $clustername := print .Values.clusterName "-" uuidv4 | default "px-cluster" }}
-{{- $internalKVDB := .Values.internalKVDB | default "true"}}
+{{- $internalKVDB := .Values.internalKVDB | default true }}
 {{- $kvdbDrives := .Values.storage.kvdbDrives | default "none" }}
 
 apiVersion: core.libopenstorage.org/v1
@@ -75,7 +75,7 @@ spec:
     useAllWithPartitions: {{ $usedrivesAndPartitions }}
     forceUseDisks: {{ $usefileSystemDrive }}
     journalDevice: auto
-    {{- if eq $internalKVDB "true"}}
+    {{- if $internalKVDB }}
     kvdbDevice: {{ $kvdbDrives }}
     {{- end }}
   {{- else }}
@@ -86,7 +86,7 @@ spec:
     - {{ $name }}
     {{- end }}
     journalDeviceSpec: auto
-    {{- if eq $internalKVDB "true"}}
+    {{- if $internalKVDB}}
     kvdbDeviceSpec: {{ $kvdbDrives }}
     {{- end }}
     {{- if ne $maxStorageNodesPerZone 0 }}
