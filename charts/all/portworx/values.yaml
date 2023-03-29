@@ -34,11 +34,12 @@ repo:
   enterprise: docker.io/portworx
   dr: docker.io/portworx
 
-deleteStrategy:                   # Options are Uninstall and Uninstall
+deleteStrategy: UninstallAndWipe    # Options are Uninstall and UninstallAndWipe
 
+# You can determine the correct versions at the following URL: https://install.portworx.com/$PXVER/version?kbver=$KBVER
 versions:
-  operator: "1.10.4"
+  #operator: "1.10.4"
   enterprise: "2.13.0"
   ociMon: "2.13.0"
   autoPilot: "1.3.7"
-  stork: "2.12.4"
+  stork: "23.2.0"
