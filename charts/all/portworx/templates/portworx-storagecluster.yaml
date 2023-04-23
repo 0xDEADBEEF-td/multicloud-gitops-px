@@ -9,14 +9,26 @@
 {{- $serviceAccount := .Values.serviceAccount | default "none" }}
 {{- $customRegistryURL := .Values.customRegistryURL | default "none" }}
 {{- $deleteStrategy := .Values.deleteStrategy | default "none" }}
-{{- $clustername := print .Values.clusterName "-" uuidv4 | default "px-cluster" }}
+{{- $clustername := .Values.clusterName | default "px-cluster" }}
 {{- $internalKVDB := .Values.internalKVDB | default true }}
 {{- $kvdbDrives := .Values.storage.kvdbDrives | default "none" }}
 
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: {{ $namespace }}
+  name: "clustername-secret"
+type: Opaque
+data:
+  {{- $secretObj := (lookup "v1" "Secret" $namespace "clustername-secret") | default dict }}
+  {{- $secretData := (get $secretObj "data") | default dict }}
+  {{- $pxclustername := (get $secretData "clustername-secret") | print .Values.clusterName "-" uuidv4 | b64enc }}
+  px-clustername: {{ $pxclustername | quote }}
+---
 apiVersion: core.libopenstorage.org/v1
 kind: StorageCluster
 metadata:
-  name: {{ $clustername }}
+  name: $(PX_NAME)
   namespace: {{ $namespace }}
   annotations:
     {{- if eq $.Values.global.clusterPlatform "AWS" }}
@@ -55,6 +67,11 @@ spec:
     - name: PX_SERVICE_ACCOUNT
       value: {{ $serviceAccount }}
     {{- end }}
+    - name: PX_NAME
+      valueFrom:
+        secretKeyRef:
+          name: clustername-secret
+          value: px-clustername 
     # TODO: Change this hardcoded image path to an ECR registry path with px-enterprise image (PWX-27961)
     - name: PX_IMAGE
       value: docker.io/portworx/px-enterprise:2.13.0
