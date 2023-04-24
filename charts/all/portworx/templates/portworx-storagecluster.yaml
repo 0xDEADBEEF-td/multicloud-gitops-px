@@ -26,7 +26,7 @@ metadata:
     portworx.io/is-aks: "true"
     {{- end }}
     portworx.io/is-openshift: "true"
-    portworx.com/install-source: helm/{{.Release.Service}}-r{{.Release.Revision}}
+    portworx.com/install-source: helm-rhmcgo
     portworx.com/helm-vars: chart="{{.Chart.Name}}-{{.Chart.Version}}"{{range $k, $v := .Values }}{{if $v}},{{ $k }}="{{ $v }}" {{end}}{{end}}
 spec:
   {{- if not (eq $deleteStrategy "none") }}

@@ -2,12 +2,12 @@ cloudProvider:
   storageClass: default-rwo
 
 clusterName: px-cluster              # This is the default. please change it to your cluster name.
-namespace: portworx              # This is the default. Change this if you don't plan to install in kube-system
+namespace: portworx              # Recommended namespace for install is 'portworx', change to desired namespace if default is unacceptable
 
 storage:
   usefileSystemDrive: false         # true/false Instructs PX to use an unmounted Drive even if it has a filesystem.
   usedrivesAndPartitions: false     # Defaults to false. Change to true and PX will use unmounted drives and partitions.
-  drives: "type=gp2,size=20"        # NOTE: This is a ";" seperated list of drives. For eg: "/dev/sda;/dev/sdb;/dev/sdc" 
+  drives: "type=gp2,size=20"        # NOTE: This is a ";" seperated list of drives. For eg: "/dev/sda;/dev/sdb;/dev/sdc"
                                     # Defaults to use -A switch.
                                     # To have drives automatically created specify the drive spec. For Eg: "type=gp2,size=150" or "type=io1,size=100,iops=2000"
   journalDevice:
