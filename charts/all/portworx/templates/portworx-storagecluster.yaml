@@ -9,7 +9,8 @@
 {{- $serviceAccount := .Values.serviceAccount | default "none" }}
 {{- $customRegistryURL := .Values.customRegistryURL | default "none" }}
 {{- $deleteStrategy := .Values.deleteStrategy | default "none" }}
-{{- $clustername := .Values.clusterName | default "px-cluster" }}
+{{- $ocpUUID := (lookup "v1" "clusterversion" "" "").spec.clusterID }}
+{{- $clustername := print .Values.clusterName "-" $ocpUUID  | default "px-cluster" }}
 {{- $internalKVDB := .Values.internalKVDB | default true }}
 {{- $kvdbDrives := .Values.storage.kvdbDrives | default "none" }}
 
