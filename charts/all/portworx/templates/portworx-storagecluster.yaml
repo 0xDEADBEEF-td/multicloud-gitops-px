@@ -9,8 +9,7 @@
 {{- $serviceAccount := .Values.serviceAccount | default "none" }}
 {{- $customRegistryURL := .Values.customRegistryURL | default "none" }}
 {{- $deleteStrategy := .Values.deleteStrategy | default "none" }}
-{{- $ocpUUID := (lookup "config.openshift.io/v1" "ClusterVersion" "" "").metadata }}
-{{- $clustername := print .Values.clusterName "-" $ocpUUID  | default "px-cluster" }}
+{{- $clustername := .Values.clusterName | default "px-cluster" }}
 {{- $internalKVDB := .Values.internalKVDB | default true }}
 {{- $kvdbDrives := .Values.storage.kvdbDrives | default "none" }}
 
