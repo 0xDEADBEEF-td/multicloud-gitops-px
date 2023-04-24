@@ -28,7 +28,7 @@ data:
 apiVersion: core.libopenstorage.org/v1
 kind: StorageCluster
 metadata:
-  name: {{ (lookup "v1" "Secret" $namespace "clustername-secret") | b64dec | quote }}
+  name: {{ (lookup "v1" "Secret" $namespace "clustername-secret" | get "data" | default dict) | b64dec | quote }}
   namespace: {{ $namespace }}
   annotations:
     {{- if eq $.Values.global.clusterPlatform "AWS" }}
