@@ -71,3 +71,8 @@
   {{- cat "portworx/px-operator:" (trim .Values.versions.operator) | replace " " ""}}
 {{- end -}}
 {{- end -}}
+
+{{- define "px.clusterName" - }}
+{{- $fullClusterName := printf .Values.clusterName "-" .Values.global.clusterDomain }}
+{{- (split "." $fullClusterName)._0
+{{- end -}}
