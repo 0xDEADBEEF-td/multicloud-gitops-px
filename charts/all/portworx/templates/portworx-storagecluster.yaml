@@ -9,14 +9,14 @@
 {{- $serviceAccount := .Values.serviceAccount | default "none" }}
 {{- $customRegistryURL := .Values.customRegistryURL | default "none" }}
 {{- $deleteStrategy := .Values.deleteStrategy | default "none" }}
-{{- $clustername := print .Values.clusterName "-" .Values.global.clusterDomain |(splitList ".")._0 | default "px-cluster" }}
+{{- $clustername := splitList "." (print .Values.clusterName "-" .Values.global.clusterDomain) | default "px-cluster" }}
 {{- $internalKVDB := .Values.internalKVDB | default true }}
 {{- $kvdbDrives := .Values.storage.kvdbDrives | default "none" }}
 
 apiVersion: core.libopenstorage.org/v1
 kind: StorageCluster
 metadata:
-  name: {{ $clustername }}
+  name: {{ $clustername._0 }}
   namespace: {{ $namespace }}
   annotations:
     {{- if eq $.Values.global.clusterPlatform "AWS" }}
