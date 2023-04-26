@@ -9,7 +9,7 @@
 {{- $serviceAccount := .Values.serviceAccount | default "none" }}
 {{- $customRegistryURL := .Values.customRegistryURL | default "none" }}
 {{- $deleteStrategy := .Values.deleteStrategy | default "none" }}
-{{- $fullClusterName := print .Values.clusterName "-" .Values.global.clusterDomain
+{{- $fullClusterName := print .Values.clusterName "-" .Values.global.clusterDomain }}
 {{- $clustername := $fullClusterName._0 | default "px-cluster" }}
 {{- $internalKVDB := .Values.internalKVDB | default true }}
 {{- $kvdbDrives := .Values.storage.kvdbDrives | default "none" }}
