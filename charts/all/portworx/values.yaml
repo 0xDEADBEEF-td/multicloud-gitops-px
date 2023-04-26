@@ -4,7 +4,6 @@ global:
 cloudProvider:
   storageClass: default-rwo
 
-clusterName: px-cluster              # This is the default. please change it to your cluster name.
 namespace: portworx              # Recommended namespace for install is 'portworx', change to desired namespace if default is unacceptable
 
 storage:

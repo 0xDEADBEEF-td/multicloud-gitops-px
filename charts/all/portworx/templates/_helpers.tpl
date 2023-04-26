@@ -73,6 +73,6 @@
 {{- end -}}
 
 {{- define "px.clusterName" -}}
-{{- $fullClusterName := print .Values.clusterName "-" .Values.global.clusterDomain }}
+{{- $fullClusterName := print "px-cluster-" .Values.global.clusterDomain }}
 {{- (split "." $fullClusterName)._0 }}
 {{- end -}}
