@@ -15,7 +15,7 @@
 apiVersion: core.libopenstorage.org/v1
 kind: StorageCluster
 metadata:
-  name: {{ template $px.clusterName . }}
+  name: {{ template "px.clusterName" . }}
   namespace: {{ $namespace }}
   annotations:
     {{- if eq $.Values.global.clusterPlatform "AWS" }}
