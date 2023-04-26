@@ -1,3 +1,6 @@
+global:
+  clusterPlatform: "AWS"
+
 cloudProvider:
   storageClass: default-rwo
 
