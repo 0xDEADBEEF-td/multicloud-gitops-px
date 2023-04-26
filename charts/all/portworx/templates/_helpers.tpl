@@ -73,5 +73,6 @@
 {{- end -}}
 
 {{- define "px.clusterName" -}}
-{{- (split "." (printf .Values.clusterName "-" .Values.global.clusterDomain))._0 }}
+{{- $fullClusterName := printf .Values.clusterName "-" .Values.global.clusterDomain }}
+{{- (split "." $fullClusterName)._0 }}
 {{- end -}}
