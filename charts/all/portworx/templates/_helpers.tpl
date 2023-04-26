@@ -71,3 +71,7 @@
   {{- cat "portworx/px-operator:" (trim .Values.versions.operator) | replace " " ""}}
 {{- end -}}
 {{- end -}}
+
+{{- define "px.ocpClusterName" -}}
+{{- cat (splitList "." ".Values.global.clusterDomain") }}
+{{- end -}}
