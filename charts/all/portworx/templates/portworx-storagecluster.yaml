@@ -9,7 +9,7 @@
 {{- $serviceAccount := .Values.serviceAccount | default "none" }}
 {{- $customRegistryURL := .Values.customRegistryURL | default "none" }}
 {{- $deleteStrategy := .Values.deleteStrategy | default "none" }}
-{{- $clustername := print .Values.clusterName "-" template "px.ocpClusterName" ._0 | default "px-cluster" }}
+{{- $clustername := print .Values.clusterName "-" (splitList "." .Values.global.clusterDomain)._0 | default "px-cluster" }}
 {{- $internalKVDB := .Values.internalKVDB | default true }}
 {{- $kvdbDrives := .Values.storage.kvdbDrives | default "none" }}
 
