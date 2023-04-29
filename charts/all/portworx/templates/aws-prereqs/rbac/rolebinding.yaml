@@ -9,7 +9,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: portworx-prereq-sa
-  namespace: {{ .values.namespace }}
+  namespace: {{ .Values.namespace }}
   apiGroup: ""
 roleRef:
   kind: ClusterRole

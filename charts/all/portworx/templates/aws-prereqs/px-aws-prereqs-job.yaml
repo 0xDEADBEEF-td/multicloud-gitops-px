@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
   name: px-aws-prereqs
-  namespace: {{ .values.namespace }}
+  namespace: {{ .Values.namespace }}
 spec:
   parallelism: 1
   completions: 1

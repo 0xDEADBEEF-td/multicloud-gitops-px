@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
   name: px-aws-prereqs-configmap
-  namespace: {{ .values.namespace }}
+  namespace: {{ .Values.namespace }}
 data:
   px_aws_pre-reqs.sh: |	
     #!/bin/bash
