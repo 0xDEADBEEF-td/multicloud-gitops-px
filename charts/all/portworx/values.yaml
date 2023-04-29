@@ -1,5 +1,5 @@
 global:
-  clusterPlatform: "AWS"
+  clusterPlatform: AWS
 
 cloudProvider:
   storageClass: default-rwo
