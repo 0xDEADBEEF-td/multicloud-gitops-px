@@ -1,4 +1,4 @@
-{{- if eq .values.global.clusterPlatform "AWS" }}
+{{- if eq $.Values.global.clusterPlatform "AWS" }}
 apiVersion: batch/v1
 kind: Job
 metadata:

@@ -1,4 +1,4 @@
-{{- if eq .values.global.clusterPlatform "AWS" }}
+{{- if eq $.Values.global.clusterPlatform "AWS" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:

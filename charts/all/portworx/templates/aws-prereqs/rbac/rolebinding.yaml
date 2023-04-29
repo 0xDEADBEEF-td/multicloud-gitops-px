@@ -1,4 +1,4 @@
-{{- if eq .values.global.clusterPlatform "AWS" }}
+{{- if eq $.Values.global.clusterPlatform "AWS" }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
