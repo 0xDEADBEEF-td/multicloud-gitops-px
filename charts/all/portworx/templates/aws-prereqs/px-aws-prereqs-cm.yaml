@@ -1,11 +1,11 @@
-{{- if eq $Values.global.clusterPlatform "AWS" }}
+{{- if eq .values.global.clusterPlatform "AWS" }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
   name: px-aws-prereqs-configmap
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .values.namespace }}
 data:
   px_aws_pre-reqs.sh: |	
     #!/bin/bash

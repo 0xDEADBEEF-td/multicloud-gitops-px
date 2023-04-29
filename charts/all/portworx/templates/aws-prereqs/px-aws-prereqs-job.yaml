@@ -1,11 +1,11 @@
-{{- if eq $Values.global.clusterPlatform "AWS" }}
+{{- if eq .values.global.clusterPlatform "AWS" }}
 apiVersion: batch/v1
 kind: Job
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
   name: px-aws-prereqs
-  namespace: portworx
+  namespace: {{ .values.namespace }}
 spec:
   parallelism: 1
   completions: 1
