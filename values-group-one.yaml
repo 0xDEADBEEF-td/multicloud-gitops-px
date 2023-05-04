@@ -15,6 +15,11 @@ clusterGroup:
     - portworx
 
   subscriptions:
+    portworx:
+      name: portworx-certified
+      namespace: portworx
+      channel: stable
+      source: certified-operators
 
   projects:
     - eso
