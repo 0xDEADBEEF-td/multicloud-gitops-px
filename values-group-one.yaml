@@ -42,10 +42,10 @@ clusterGroup:
       path: charts/all/hello-world
 
     portworx:
-      name: portworx-certified
+      name: portworx
       namespace: portworx
-      channel: stable
-      source: certified-operators
+      project: portworx
+      path: charts/all/portworx
 
   # imperative:
   #   # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
