@@ -12,6 +12,7 @@ clusterGroup:
     - config-demo
     - hello-world
     - golang-external-secrets
+    - portworx
 
   subscriptions:
 
@@ -19,6 +20,7 @@ clusterGroup:
     - eso
     - config-demo
     - hello-world
+    - portworx
 
   applications:
     golang-external-secrets:
@@ -38,6 +40,12 @@ clusterGroup:
       namespace: hello-world
       project: hello-world
       path: charts/all/hello-world
+
+    portworx:
+      name: portworx-certified
+      namespace: portworx
+      channel: stable
+      source: certified-operators
 
   # imperative:
   #   # NOTE: We *must* use lists and not hashes. As hashes lose ordering once parsed by helm
